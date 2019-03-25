@@ -1,0 +1,26 @@
+--cpu=Cortex-M4.fp
+"mpu9250\startup_stm32f411xe.o"
+"mpu9250\main.o"
+"mpu9250\stm32f4xx_it.o"
+"mpu9250\stm32f4xx_hal_msp.o"
+"mpu9250\mpu9250.o"
+"mpu9250\stm32f4xx_hal_spi.o"
+"mpu9250\stm32f4xx_hal_tim.o"
+"mpu9250\stm32f4xx_hal_tim_ex.o"
+"mpu9250\stm32f4xx_hal_rcc.o"
+"mpu9250\stm32f4xx_hal_rcc_ex.o"
+"mpu9250\stm32f4xx_hal_flash.o"
+"mpu9250\stm32f4xx_hal_flash_ex.o"
+"mpu9250\stm32f4xx_hal_flash_ramfunc.o"
+"mpu9250\stm32f4xx_hal_gpio.o"
+"mpu9250\stm32f4xx_hal_dma_ex.o"
+"mpu9250\stm32f4xx_hal_dma.o"
+"mpu9250\stm32f4xx_hal_pwr.o"
+"mpu9250\stm32f4xx_hal_pwr_ex.o"
+"mpu9250\stm32f4xx_hal_cortex.o"
+"mpu9250\stm32f4xx_hal.o"
+"mpu9250\system_stm32f4xx.o"
+--library_type=microlib --strict --scatter "mpu9250\mpu9250.sct"
+--summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list "mpu9250.map" -o mpu9250\mpu9250.axf

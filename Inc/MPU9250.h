@@ -1,7 +1,7 @@
 /*
  * MPU925.h
  *
- *  Created on: 23 ѕЗ? 2018 Д.
+ *  Created on: 23 ма€ 2018 г.
  *      Author: Max
  */
 
@@ -49,7 +49,7 @@ typedef enum SampleRateDivider_ {
 	LP_ACCEL_ODR_500HZ
 } SampleRateDivider;
 
-uint8_t MPU9250_Init();
+uint8_t MPU9250_Init(void);
 /* read the data, each argiment should point to a array for x, y, and x */
 void MPU9250_GetData(int16_t* AccData, int16_t* MagData, int16_t* GyroData);
 

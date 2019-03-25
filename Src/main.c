@@ -43,6 +43,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
+#include <stdint.h>
 #include "MPU9250.h"
 
 /* USER CODE END Includes */
@@ -67,6 +68,7 @@ SPI_HandleTypeDef hspi2;
 
 /* USER CODE BEGIN PV */
 int16_t AccData[3], GyroData[3], MagData[3];
+
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -99,6 +101,7 @@ int main(void)
 
   /* USER CODE BEGIN Init */
 
+
   /* USER CODE END Init */
 
   /* Configure the system clock */
@@ -112,7 +115,8 @@ int main(void)
   MX_GPIO_Init();
   MX_SPI2_Init();
   /* USER CODE BEGIN 2 */
-	MPU9250_Init();
+		MPU9250_Init();
+
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -120,15 +124,9 @@ int main(void)
   while (1)
   {
     /* USER CODE END WHILE */
-		MPU9250_GetData(AccData, GyroData, MagData);
-
-		printf("%08d;%08d;%08d;%08d;%08d;%08d;%08d;%08d;%08d\n",
-		(int16_t)AccData[0], (int16_t)AccData[1], (int16_t)AccData[2],
-		(int16_t)GyroData[0], (int16_t)GyroData[1], (int16_t)GyroData[2],
-		(int16_t)MagData[0], (int16_t)MagData[1], (int16_t)MagData[2]);
-		
 
     /* USER CODE BEGIN 3 */
+	MPU9250_GetData(AccData, GyroData, MagData);
   }
   /* USER CODE END 3 */
 }
@@ -225,28 +223,18 @@ static void MX_GPIO_Init(void)
 
   /* GPIO Ports Clock Enable */
   __HAL_RCC_GPIOH_CLK_ENABLE();
-  __HAL_RCC_GPIOA_CLK_ENABLE();
   __HAL_RCC_GPIOB_CLK_ENABLE();
+  __HAL_RCC_GPIOA_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(LED_GPIO_Port, LED_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GY_CS_GPIO_Port, GY_CS_Pin, GPIO_PIN_RESET);
 
-  /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(CS_GPIO_Port, CS_Pin, GPIO_PIN_RESET);
-
-  /*Configure GPIO pin : LED_Pin */
-  GPIO_InitStruct.Pin = LED_Pin;
+  /*Configure GPIO pin : GY_CS_Pin */
+  GPIO_InitStruct.Pin = GY_CS_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-  HAL_GPIO_Init(LED_GPIO_Port, &GPIO_InitStruct);
-
-  /*Configure GPIO pin : CS_Pin */
-  GPIO_InitStruct.Pin = CS_Pin;
-  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
-  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-  HAL_GPIO_Init(CS_GPIO_Port, &GPIO_InitStruct);
+  HAL_GPIO_Init(GY_CS_GPIO_Port, &GPIO_InitStruct);
 
 }
 

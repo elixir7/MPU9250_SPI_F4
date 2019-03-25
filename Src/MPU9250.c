@@ -6,13 +6,13 @@
  */
 
 #include "MPU9250.h"
-#include "main.h"
+
 
 const uint8_t READWRITE_CMD = 0x80;
 const uint8_t MULTIPLEBYTE_CMD = 0x40;
 const uint8_t DUMMY_BYTE = 0x00;
 
-const uint8_t _address = 0b11010000;
+const uint8_t _address = 0xD0;
 // 400 kHz
 const uint32_t _i2cRate = 400000;
 
@@ -112,7 +112,7 @@ static inline void MPU9250_Deactivate()
 uint8_t SPIx_WriteRead(uint8_t Byte)
 {
 	uint8_t receivedbyte = 0;
-	if(HAL_SPI_TransmitReceive(&MPU9250_SPI,(uint8_t*) &Byte,(uint8_t*) &receivedbyte,1,0x1000)!=HAL_OK)
+	if(HAL_SPI_TransmitReceive(&hspi2,(uint8_t*) &Byte,(uint8_t*) &receivedbyte,1,0x1000)!=HAL_OK)
 	{
 		return -1;
 	}
