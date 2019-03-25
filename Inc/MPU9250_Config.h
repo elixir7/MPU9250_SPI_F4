@@ -7,9 +7,10 @@
 
 #ifndef UTIL_MPU9250_CONFIG_H_
 #define UTIL_MPU9250_CONFIG_H_
+#include "main.h"
 
 #define MPU9250_SPI			hspi2
-#define	MPU9250_CS_GPIO		CS_GPIO_Port
-#define	MPU9250_CS_PIN		CS_Pin
+#define	MPU9250_CS_GPIO		GY_CS_GPIO_Port
+#define	MPU9250_CS_PIN		GY_CS_Pin
 
 #endif /* UTIL_MPU9250_CONFIG_H_ */

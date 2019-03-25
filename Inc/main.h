@@ -78,12 +78,9 @@ void Error_Handler(void);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
-#define LED_Pin GPIO_PIN_5
-#define LED_GPIO_Port GPIOA
-#define CS_Pin GPIO_PIN_12
-#define CS_GPIO_Port GPIOB
+#define GY_CS_Pin GPIO_PIN_12
+#define GY_CS_GPIO_Port GPIOB
 /* USER CODE BEGIN Private defines */
-
 extern SPI_HandleTypeDef hspi2;
 
 /* USER CODE END Private defines */
