@@ -67,8 +67,6 @@ SPI_HandleTypeDef hspi2;
 
 /* USER CODE BEGIN PV */
 int16_t AccData[3], GyroData[3], MagData[3];
-
-MPU9250_GetData(AccData, GyroData, MagData);
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -122,6 +120,13 @@ int main(void)
   while (1)
   {
     /* USER CODE END WHILE */
+		MPU9250_GetData(AccData, GyroData, MagData);
+
+		printf("%08d;%08d;%08d;%08d;%08d;%08d;%08d;%08d;%08d\n",
+		(int16_t)AccData[0], (int16_t)AccData[1], (int16_t)AccData[2],
+		(int16_t)GyroData[0], (int16_t)GyroData[1], (int16_t)GyroData[2],
+		(int16_t)MagData[0], (int16_t)MagData[1], (int16_t)MagData[2]);
+		
 
     /* USER CODE BEGIN 3 */
   }
